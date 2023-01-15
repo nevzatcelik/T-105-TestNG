@@ -80,6 +80,19 @@ public class QualityDemy_Page {
                 .sendKeys(Keys.TAB).sendKeys("ahmet").click(payButton).perform();
     }
 
+    @FindBy(xpath = "//h5[text()=' Java Kursu']")
+    public WebElement javaKursu;
+    @FindBy(xpath = "//button[@class='btn btn-add-wishlist ']")
+    public WebElement addWishList;
+    @FindBy(xpath = "(//div[@class='icon'])[3]")
+    public WebElement wishListIcon;
+    @FindBy(xpath = "//a[text()='Go to wishlist']")
+    public WebElement goToWishListButton;
+
+    @FindBy(xpath = "//button[@onclick='handleWishList(this)']")
+    public WebElement wishListCikarma;
+    @FindBy(xpath = "//a[@class='btn btn-danger btn-yes']")
+    public WebElement yesButton;
 
 
 }
