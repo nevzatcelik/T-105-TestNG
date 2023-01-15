@@ -1,6 +1,8 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import pages.QualityDemy_Page;
@@ -23,7 +25,7 @@ public class QualityDemyTest1 {
     @Test
     public void qualityDemyTest(){
         //qualityDemy web sayfasina gidin
-        Driver.getDriver().get(ConfigReader.getProperty("nevzat@gmail.com"));
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
         quality.loginMethodu();
         // categories dropdown dan all courses secenegine tiklayin
         ReusableMethods.bekle(5);
@@ -33,16 +35,35 @@ public class QualityDemyTest1 {
         // acilan sayfada olan derslerden The English Master Course dersine tiklayin
         actions.sendKeys(Keys.END).perform();
         ReusableMethods.bekle(1);
-        quality.secondPage.click();
-        // dersi satin almak icin Buy now secenegine ve checkout butonuna tiklayin
-        actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
+        quality.secondPage.click(); actions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.bekle(1);
         quality.english.click();
+        // dersi satin almak icin Buy now secenegine ve checkout butonuna tiklayin
+        quality.buyButton.click();
+        quality.checkoutButton.click();
         // stripe secenegini secerek pay with stripe e tiklayin
+        quality.stripeButton.click();
+        quality.payWithStripeButton.click();
         // Email,card information gun ay yil cvc ve name on card bilgilerini doldurarak pay a tiklayin
+        //quality.payWithCard();
+        quality.payWithCard();
+
+
 
 
     }
+    //qualityDemy web sayfasina gidin
+    // cookies i kabul edin
+    // login linkine tiklayin
+    // email ve password bilgilerini girerek login butonuna tiklayin
+    // anasayfadan java kursunu secelim
+    // acilan sayfada ders add to wishlist e eklenir
+    // urunun eklendigi test edilir
+    // eklenilen urun wishlistten cikarilir
+    //cikarildigi test ediliri
+     @Test
+    public void test2(){
 
+     }
     }
 

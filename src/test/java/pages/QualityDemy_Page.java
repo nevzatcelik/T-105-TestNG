@@ -1,13 +1,16 @@
 package pages;
 
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.ConfigReader;
 import utilities.Driver;
 
 public class QualityDemy_Page {
+    Actions actions=new Actions(Driver.getDriver());
     public QualityDemy_Page(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
@@ -35,6 +38,7 @@ public class QualityDemy_Page {
         loginButton.click();
     }
 
+
     @FindBy(xpath = "//*[text()='Categories']")
     public WebElement categories;
 
@@ -49,6 +53,33 @@ public class QualityDemy_Page {
 
     @FindBy(xpath = "(//div[@class='col-md-12'])[10]")
     public WebElement photo;
+
+    @FindBy(xpath = "//button[@class='btn btn-buy']")
+    public WebElement buyButton;
+
+    @FindBy(xpath = "//button[text()='Checkout']")
+    public WebElement checkoutButton;
+
+    @FindBy(xpath = "//div[@class='row payment-gateway stripe']")
+    public WebElement stripeButton;
+
+    @FindBy(xpath = "//button[text()='Pay with stripe']")
+    public WebElement payWithStripeButton;
+
+    @FindBy(xpath = "//input[@name='email']")
+    private WebElement payEmailBox;
+
+    @FindBy(xpath = "//div[@class='SubmitButton-IconContainer']")
+    private WebElement payButton;
+
+    public void payWithCard(){
+        actions.sendKeys(payEmailBox,"anevzatcelik@gmail.com")
+                .sendKeys(Keys.TAB).sendKeys("4242424242424242")
+                .sendKeys(Keys.TAB).sendKeys("1124")
+                .sendKeys(Keys.TAB).sendKeys("325")
+                .sendKeys(Keys.TAB).sendKeys("ahmet").click(payButton).perform();
+    }
+
 
 
 }
