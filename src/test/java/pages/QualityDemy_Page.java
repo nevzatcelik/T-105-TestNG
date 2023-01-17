@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class QualityDemy_Page {
     Actions actions=new Actions(Driver.getDriver());
@@ -94,5 +95,20 @@ public class QualityDemy_Page {
     @FindBy(xpath = "//a[@class='btn btn-danger btn-yes']")
     public WebElement yesButton;
 
+    public void gonderilecekMailvePassword(String gonderilecekMail,String gonderilecekPassword){
+        if (cookies.isDisplayed()) {
+            cookies.click();
+            loginLink.click();
+            emailBox.sendKeys(gonderilecekMail);
+            passwordBox.sendKeys(gonderilecekPassword);
+            ReusableMethods.bekle(5);
+        }else {
+           loginLink.click();
+            emailBox.sendKeys(gonderilecekMail);
+            passwordBox.sendKeys(gonderilecekPassword);
+            ReusableMethods.bekle(5);
+        }
+        loginButton.click();
+    }
 
 }
